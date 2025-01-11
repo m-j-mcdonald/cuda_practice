@@ -76,7 +76,7 @@ void onDevice(float* h_in, float* h_out, int mat_rows, int mat_cols, cudaStream_
     cudaCheckErrors("deallocate error");
 }
 
-void test(float* h_in, float* h_out, int mat_size) {
+void test(float* h_in, float* h_out, int mat_size) 
     // print out the resulting array
     for (int i = 0; i < mat_size; i++) {
         assert(h_out[i] == (h_in[i] * h_in[i] * h_in[i]));
