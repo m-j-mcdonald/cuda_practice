@@ -109,7 +109,6 @@ void onHost() {
     }
     cudaCheckErrors("stream creation error");
 
-    // call the kernel
     onDevice(h_in, h_out, cols, rows, streams, n_streams);
     test(h_in, h_out, cols*rows);
 
