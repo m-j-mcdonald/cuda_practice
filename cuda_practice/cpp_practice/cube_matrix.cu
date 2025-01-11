@@ -1,19 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <vector>
-
-// error checking macro
-#define cudaCheckErrors(msg) \
-    do { \
-        cudaError_t __err = cudaGetLastError(); \
-        if (__err != cudaSuccess) { \
-            fprintf(stderr, "Fatal error: %s (%s at %s:%d)\n", \
-                msg, cudaGetErrorString(__err), \
-                __FILE__, __LINE__); \
-            fprintf(stderr, "*** FAILED - ABORTING\n"); \
-            exit(1); \
-        } \
-    } while (0)
+#include "cuda_utils.cuh"
 
 
 template<typename T>
@@ -76,7 +64,7 @@ void onDevice(float* h_in, float* h_out, int mat_rows, int mat_cols, cudaStream_
     cudaCheckErrors("deallocate error");
 }
 
-void test(float* h_in, float* h_out, int mat_size) 
+void test(float* h_in, float* h_out, int mat_size) {
     // print out the resulting array
     for (int i = 0; i < mat_size; i++) {
         assert(h_out[i] == (h_in[i] * h_in[i] * h_in[i]));

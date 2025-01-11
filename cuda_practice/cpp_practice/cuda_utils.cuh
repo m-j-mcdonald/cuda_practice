@@ -1,5 +1,3 @@
-#include <cuda_runtime_api.h>
-
 // error checking macro
 #define cudaCheckErrors(msg) \
     do { \
